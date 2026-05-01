@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Chatboq Automation Suite" parallel="false" thread-count="1">
+    
+    <parameter name="browser" value="chrome"/>
+    <parameter name="headless" value="false"/>
+    
+    <test name="All Tests">
+        <classes>
+            <class name="pipelineStater.LoginTest"/>
+            <class name="pipelineStater.ClientTest"/>
+            <class name="pipelineStater.TicketTest"/>
+            <class name="pipelineStater.MessageTest"/>
+            <class name="pipelineStater.InvitationTest"/>
+        </classes>
+    </test>
+    
+</suite>

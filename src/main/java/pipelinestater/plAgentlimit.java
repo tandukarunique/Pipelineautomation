@@ -8,7 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import emailAutomate.Emailautomate;
+import org.openqa.selenium.support.ui.Select;
+import pipelineemailAutomate.plEmailautomate;
 import org.openqa.selenium.interactions.Actions;
 
 public class plAgentlimit {
@@ -16,11 +17,11 @@ public class plAgentlimit {
     private WebDriverWait wait;
     private WebDriver driver;
     private JavascriptExecutor js;
-    private Emailautomate currentEmailAutomate;
+    private plEmailautomate currentEmailAutomate;
     
     private static final int NUMBER_OF_INVITATIONS = 6;
     
-    public plAgentlimit(WebDriverWait wait, WebDriver driver, JavascriptExecutor js, Emailautomate emailAutomate) throws InterruptedException {
+    public plAgentlimit(WebDriverWait wait, WebDriver driver, JavascriptExecutor js, plEmailautomate emailAutomate) throws InterruptedException {
         this.wait = wait;
         this.driver = driver;
         this.js = js;
@@ -40,7 +41,7 @@ public class plAgentlimit {
                 System.out.println("Opening new incognito email browser...");
                 currentEmailAutomate.closeEmailBrowser();
                 Thread.sleep(2000);
-                currentEmailAutomate = new Emailautomate(true);
+                currentEmailAutomate = new plEmailautomate(true);
                 Thread.sleep(2000);
             }
             

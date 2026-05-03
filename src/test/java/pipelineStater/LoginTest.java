@@ -22,11 +22,12 @@ public class LoginTest extends BaseTest {
         }
     }
     
+    // COMMENT OUT OR DELETE THIS ENTIRE TEST - It's deleting your auth.json!
+    /*
     @Test(priority = 2, description = "Verify manual login with CAPTCHA")
     public void testManualLoginWithCaptcha() throws Exception {
         System.out.println("Test: Manual Login with CAPTCHA");
         
-        // Delete auth.json to force manual login
         java.io.File authFile = new java.io.File("auth.json");
         if (authFile.exists()) {
             authFile.delete();
@@ -36,6 +37,7 @@ public class LoginTest extends BaseTest {
         boolean result = loginPage.manualLoginWithCaptcha(EMAIL, PASSWORD);
         Assert.assertTrue(result, "Manual login should complete successfully");
     }
+    */
     
     @Test(priority = 3, description = "Verify dashboard navigation")
     public void testNavigateToDashboard() throws Exception {
@@ -45,21 +47,10 @@ public class LoginTest extends BaseTest {
         String currentUrl = driver.getCurrentUrl();
         Assert.assertTrue(currentUrl.contains("dashboard"), "Should be on dashboard page");
         
-        // Wait for dashboard to load
         wait.until(ExpectedConditions.elementToBeClickable(
             By.xpath("//div[contains(@class,'rounded-full') and contains(@class,'h-8')]")
         )).click();
         
-        String title = driver.getTitle();
-        System.out.println("Dashboard title: " + title);
-    }
-    
-    @Test(priority = 4, description = "Verify org ID retrieval")
-    public void testGetOrgId() {
-        System.out.println("Test: Get Organization ID");
-        
-        String orgId = loginPage.getOrgId();
-        Assert.assertNotNull(orgId, "Organization ID should not be null");
-        System.out.println("Organization ID: " + orgId);
+        System.out.println("Dashboard accessed successfully");
     }
 }

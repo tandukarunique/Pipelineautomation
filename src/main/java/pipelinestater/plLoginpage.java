@@ -1,4 +1,4 @@
-package stater;
+package pipelinestater;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.openqa.selenium.*;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Loginpage {
+public class plLoginpage {
 
     private static final String APP_ORIGIN    = "https://dev.chatboq.com";
     private static final String AUTH_FILE     = "auth.json";
@@ -23,17 +23,13 @@ public class Loginpage {
     private final ObjectMapper mapper = new ObjectMapper();
     private final File authFile = new File(AUTH_FILE);
 
-    public Loginpage(WebDriver driver) {
+    public plLoginpage(WebDriver driver) {
         this.driver = driver;
-        this.js     = (JavascriptExecutor) driver;
+        this.js = (JavascriptExecutor) driver;
     }
 
-    // ─────────────────────────────────────────────
-    // PUBLIC API
-    // ─────────────────────────────────────────────
-
     public boolean loadSavedAuth() {
-        AuthState auth = readAuthFile();
+        plAuthState auth = readAuthFile();
         if (auth == null) {
             System.out.println("No saved auth found. Manual login required.");
             return false;
@@ -45,6 +41,11 @@ public class Loginpage {
 
             injectCookies(auth);
             injectLocalStorage(auth);
+            sleep(2000);
+            
+            // Refresh to apply cookies
+            driver.navigate().refresh();
+            sleep(2000);
 
             System.out.println("Loaded saved authentication.");
             return true;
@@ -89,6 +90,15 @@ public class Loginpage {
             System.err.println("❌ Login did not complete. auth.json NOT saved.");
             return false;
         }
+        
+        // NEW: Handle organization selection if needed
+        if (currentUrl.contains("select-organization")) {
+            System.out.println("Please select your organization in the browser...");
+            System.out.println("Press ENTER after selecting organization and reaching the dashboard...");
+            new Scanner(System.in).nextLine();
+            currentUrl = driver.getCurrentUrl();
+            System.out.println("Current URL after org selection: " + currentUrl);
+        }
 
         sleep(3000);
 
@@ -106,6 +116,29 @@ public class Loginpage {
 
         String currentUrl = driver.getCurrentUrl();
         System.out.println("Landed on: " + currentUrl);
+        
+        // NEW: Handle organization selection automatically
+        if (currentUrl.contains("select-organization")) {
+            System.out.println("Selecting organization...");
+            try {
+                // Try to find and click the first organization button
+                WebElement orgButton = wait.until(ExpectedConditions.elementToBeClickable(
+                    By.xpath("//button[contains(text(), 'Select')] | //section[contains(text(), 'Select')]")
+                ));
+                orgButton.click();
+                sleep(2000);
+                currentUrl = driver.getCurrentUrl();
+                System.out.println("After org selection: " + currentUrl);
+                
+                // Save auth again with organization context
+                saveAuthState();
+                System.out.println("✅ Auth updated with organization selection");
+            } catch (Exception e) {
+                System.out.println("Could not auto-select org: " + e.getMessage());
+                System.out.println("Please select organization manually in the browser...");
+                try { Thread.sleep(10000); } catch (InterruptedException ignored) {}
+            }
+        }
 
         if (currentUrl.contains("/login")) {
             throw new RuntimeException(
@@ -122,15 +155,24 @@ public class Loginpage {
             }
         }
     }
+    
+    // Helper method for WebDriverWait
+    private WebDriverWait wait;
+    private WebDriverWait getWait() {
+        if (wait == null) {
+            wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        }
+        return wait;
+    }
 
     public String getOrgId() {
         String orgId = getStoredValue(ORG_STORE_KEY);
         if (orgId == null) orgId = getStoredValue("organization_id");
 
         if (orgId == null) {
-            AuthState auth = readAuthFile();
+            plAuthState auth = readAuthFile();
             if (auth != null && auth.cookies != null) {
-                for (AuthState.CookieData c : auth.cookies) {
+                for (plAuthState.CookieData c : auth.cookies) {
                     if ("organization".equals(c.name)) {
                         return c.value;
                     }
@@ -139,10 +181,6 @@ public class Loginpage {
         }
         return orgId;
     }
-
-    // ─────────────────────────────────────────────
-    // INTERNAL HELPERS
-    // ─────────────────────────────────────────────
 
     private String resolveAppPath(String pathname) {
         if (pathname == null || pathname.matches("^https?://.*")) return pathname;
@@ -173,25 +211,25 @@ public class Loginpage {
     }
 
     private void saveAuthState() {
-        AuthState auth = new AuthState();
+        plAuthState auth = new plAuthState();
 
         auth.cookies = new ArrayList<>();
         for (Cookie c : driver.manage().getCookies()) {
-            AuthState.CookieData cd = new AuthState.CookieData();
-            cd.name     = c.getName();
-            cd.value    = c.getValue();
-            cd.domain   = c.getDomain();
-            cd.path     = c.getPath();
-            cd.expires  = c.getExpiry() != null ? (double) c.getExpiry().getTime() / 1000 : -1;
+            plAuthState.CookieData cd = new plAuthState.CookieData();
+            cd.name = c.getName();
+            cd.value = c.getValue();
+            cd.domain = c.getDomain();
+            cd.path = c.getPath();
+            cd.expires = c.getExpiry() != null ? (double) c.getExpiry().getTime() / 1000 : -1;
             cd.httpOnly = c.isHttpOnly();
-            cd.secure   = c.isSecure();
+            cd.secure = c.isSecure();
             cd.sameSite = c.getSameSite();
             auth.cookies.add(cd);
         }
         System.out.println("Saved " + auth.cookies.size() + " cookies.");
 
-        AuthState.OriginData origin = new AuthState.OriginData();
-        origin.origin       = APP_ORIGIN;
+        plAuthState.OriginData origin = new plAuthState.OriginData();
+        origin.origin = APP_ORIGIN;
         origin.localStorage = new ArrayList<>();
 
         try {
@@ -208,8 +246,8 @@ public class Loginpage {
 
             if (ls != null) {
                 ls.forEach((k, v) -> {
-                    AuthState.LocalStorageItem item = new AuthState.LocalStorageItem();
-                    item.name  = k;
+                    plAuthState.LocalStorageItem item = new plAuthState.LocalStorageItem();
+                    item.name = k;
                     item.value = String.valueOf(v);
                     origin.localStorage.add(item);
                 });
@@ -223,10 +261,10 @@ public class Loginpage {
         writeAuthFile(auth);
     }
 
-    private void injectCookies(AuthState auth) {
+    private void injectCookies(plAuthState auth) {
         if (auth.cookies == null) return;
         int count = 0;
-        for (AuthState.CookieData c : auth.cookies) {
+        for (plAuthState.CookieData c : auth.cookies) {
             if (c.domain == null || !c.domain.contains("chatboq.com")) continue;
             try {
                 Cookie.Builder builder = new Cookie.Builder(c.name, c.value)
@@ -243,13 +281,13 @@ public class Loginpage {
         System.out.println("Injected " + count + " cookies.");
     }
 
-    private void injectLocalStorage(AuthState auth) {
+    private void injectLocalStorage(plAuthState auth) {
         if (auth.origins == null) return;
         int count = 0;
-        for (AuthState.OriginData origin : auth.origins) {
+        for (plAuthState.OriginData origin : auth.origins) {
             if (!APP_ORIGIN.equals(origin.origin)) continue;
             if (origin.localStorage == null) continue;
-            for (AuthState.LocalStorageItem item : origin.localStorage) {
+            for (plAuthState.LocalStorageItem item : origin.localStorage) {
                 try {
                     js.executeScript(
                         "localStorage.setItem(arguments[0], arguments[1]);",
@@ -273,17 +311,17 @@ public class Loginpage {
         }
     }
 
-    private AuthState readAuthFile() {
+    private plAuthState readAuthFile() {
         try {
             if (!authFile.exists()) return null;
-            return mapper.readValue(authFile, AuthState.class);
+            return mapper.readValue(authFile, plAuthState.class);
         } catch (Exception e) {
             System.err.println("Could not read auth.json: " + e.getMessage());
             return null;
         }
     }
 
-    private void writeAuthFile(AuthState auth) {
+    private void writeAuthFile(plAuthState auth) {
         try {
             mapper.writerWithDefaultPrettyPrinter().writeValue(authFile, auth);
             System.out.println("auth.json written to: " + authFile.getAbsolutePath());

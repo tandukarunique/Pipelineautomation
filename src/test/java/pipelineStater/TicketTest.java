@@ -1,13 +1,17 @@
 package pipelineStater;
 
-import Ticket.GuestCustomer;
-import Ticket.NormalCustomer;
+// FIXED imports - use your actual packages
+import pipelineTicket.plGuestCustomer;
+import pipelineTicket.plNormalCustomer;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.annotations.Parameters;
+import org.testng.annotations.Optional;
 
 public class TicketTest extends BaseTest {
     
@@ -17,7 +21,7 @@ public class TicketTest extends BaseTest {
         
         navigateToTickets();
         
-        GuestCustomer guestTicket = new GuestCustomer(driver);
+        plGuestCustomer guestTicket = new plGuestCustomer(driver);  // ← FIXED
         
         createTicket();
         
@@ -48,7 +52,7 @@ public class TicketTest extends BaseTest {
         
         navigateToTickets();
         
-        NormalCustomer normalTicket = new NormalCustomer(driver, wait, js);
+        plNormalCustomer normalTicket = new plNormalCustomer(driver, wait, js);  // ← FIXED
         
         createTicket();
         normalTicket.fillTicketForm();
@@ -73,7 +77,7 @@ public class TicketTest extends BaseTest {
                 System.out.println("\n--- Creating " + ticketType + " Ticket " + i + " of " + numberOfTickets + " ---");
                 
                 if ("guest".equalsIgnoreCase(ticketType)) {
-                    GuestCustomer guestTicket = new GuestCustomer(driver);
+                    plGuestCustomer guestTicket = new plGuestCustomer(driver);  // ← FIXED
                     createTicket();
                     guestTicket.clickGuestCustomer();
                     guestTicket.enterPreciseTopic("Test ticket " + i + " - Guest");
@@ -88,7 +92,7 @@ public class TicketTest extends BaseTest {
                     guestTicket.AgentNotes();
                     guestTicket.Clickcreatebtn();
                 } else {
-                    NormalCustomer normalTicket = new NormalCustomer(driver, wait, js);
+                    plNormalCustomer normalTicket = new plNormalCustomer(driver, wait, js);  // ← FIXED
                     createTicket();
                     normalTicket.fillTicketForm();
                 }
@@ -116,11 +120,14 @@ public class TicketTest extends BaseTest {
         Assert.assertTrue(successCount > 0, "At least one ticket should be created");
     }
     
-    private void navigateToTickets() throws InterruptedException {
+   /* private void navigateToTickets() throws InterruptedException {
         try {
             WebElement ticketsLink = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//span[contains(@class, 'truncate') and text()='Tickets']")
+                By.xpath("//a[contains(@href, '/tickets')]//p[text()='Tickets']")
             ));
+            
+            
+            
             ticketsLink.click();
             System.out.println("✓ Navigated to Tickets");
             Thread.sleep(1500);
@@ -128,6 +135,87 @@ public class TicketTest extends BaseTest {
             System.out.println("Navigation to tickets failed: " + e.getMessage());
         }
     }
+    */
+    
+    
+    private void navigateToTickets() throws InterruptedException {
+        try {
+            System.out.println("Navigating to Tickets...");
+            Thread.sleep(3000); // Wait for page to fully load
+            
+            // Strategy 1: By href attribute
+            try {
+                WebElement ticketsLink = wait.until(ExpectedConditions.elementToBeClickable(
+                    By.xpath("//a[contains(@href, '/tickets')]")
+                ));
+                ticketsLink.click();
+                System.out.println("✓ Clicked on Tickets (Strategy 1: href)");
+                Thread.sleep(1500);
+                return;
+            } catch (Exception e1) {
+                System.out.println("Strategy 1 failed: " + e1.getMessage());
+            }
+            
+            // Strategy 2: By text 'Tickets'
+            try {
+                WebElement ticketsLink = wait.until(ExpectedConditions.elementToBeClickable(
+                    By.xpath("//p[text()='Tickets']")
+                ));
+                ticketsLink.click();
+                System.out.println("✓ Clicked on Tickets (Strategy 2: text)");
+                Thread.sleep(1500);
+                return;
+            } catch (Exception e2) {
+                System.out.println("Strategy 2 failed: " + e2.getMessage());
+            }
+            
+            // Strategy 3: By span with truncate class
+            try {
+                WebElement ticketsLink = wait.until(ExpectedConditions.elementToBeClickable(
+                    By.xpath("//span[contains(@class, 'truncate')]//p[text()='Tickets']")
+                ));
+                ticketsLink.click();
+                System.out.println("✓ Clicked on Tickets (Strategy 3: truncate class)");
+                Thread.sleep(1500);
+                return;
+            } catch (Exception e3) {
+                System.out.println("Strategy 3 failed: " + e3.getMessage());
+            }
+            
+            // Strategy 4: JavaScript click on href
+            try {
+                WebElement ticketsLink = driver.findElement(By.xpath("//a[contains(@href, '/tickets')]"));
+                js.executeScript("arguments[0].click();", ticketsLink);
+                System.out.println("✓ Clicked on Tickets (Strategy 4: JavaScript)");
+                Thread.sleep(1500);
+                return;
+            } catch (Exception e4) {
+                System.out.println("Strategy 4 failed: " + e4.getMessage());
+            }
+            
+            // Strategy 5: Find any element containing Tickets text
+            try {
+                WebElement ticketsLink = driver.findElement(By.xpath("//*[contains(text(), 'Tickets')]"));
+                js.executeScript("arguments[0].click();", ticketsLink);
+                System.out.println("✓ Clicked on Tickets (Strategy 5: contains text)");
+                Thread.sleep(1500);
+                return;
+            } catch (Exception e5) {
+                System.out.println("Strategy 5 failed: " + e5.getMessage());
+            }
+            
+            // If all strategies fail
+            System.out.println("❌ All navigation strategies failed!");
+            
+        } catch (Exception e) {
+            System.out.println("Navigation to tickets failed: " + e.getMessage());
+        }
+    }
+    
+    
+    
+    
+    
     
     private void createTicket() throws Exception {
         WebElement createTicketBtn = wait.until(ExpectedConditions.elementToBeClickable(

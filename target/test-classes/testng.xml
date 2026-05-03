@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Chatboq Automation Suite" parallel="false" thread-count="1">
+    
+    <parameter name="browser" value="chrome"/>
+    <parameter name="headless" value="false"/>
+    <parameter name="clientCount" value="1"/>
+    <parameter name="ticketCount" value="2"/>
+    <parameter name="ticketType" value="guest"/>
+    <parameter name="invitationCount" value="1"/>
+    
+    <!-- Login Tests - Auto login only (no manual CAPTCHA test) -->
+    <test name="Login Tests">
+        <classes>
+            <class name="pipelineStater.LoginTest">
+                <methods>
+                    <include name="testSavedAuthLogin"/>
+                    <include name="testNavigateToDashboard"/>
+                    <!-- Excluding testManualLoginWithCaptcha - run only once manually if needed -->
+                </methods>
+            </class>
+        </classes>
+    </test>
+  
+    <!-- Client Tests -->
+    <test name="Client Tests ">
+        <classes>
+            <class name="pipelineStater.ClientTest">
+                <methods>
+                    <include name="testCreateSingleClient"/>
+                    <include name="testClientListAccessible"/>
+                    <!-- Excluding testCreateMultipleClients for performance -->
+                </methods>
+            </class>
+        </classes>
+    </test>
+    
+    <!-- Ticket Tests -->
+    <test name="Ticket Tests" >
+        <classes>
+            <class name="pipelineStater.TicketTest">
+                <methods>
+                    <include name="testCreateGuestTicket"/>
+                    <include name="testCreateNormalCustomerTicket"/>
+                    <!-- Excluding testCreateMultipleTickets for performance -->
+                </methods>
+            </class>
+        </classes>
+    </test>
+    
+    <!-- Message Tests -->
+    <test name="Message Tests" >
+        <classes>
+            <class name="pipelineStater.MessageTest">
+                <methods>
+                    <include name="testSendMessage"/>
+                    <!-- Excluding edit and delete tests if they cause issues -->
+                </methods>
+            </class>
+        </classes>
+    </test>
+    
+ 
+    
+    <!-- Invitation Tests ) -->
+    <test name="Invitation Tests" >
+        <classes>
+            <class name="pipelineStater.InvitationTest">
+                <methods>
+                    <include name="testSendSingleInvitation"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    
+</suite>

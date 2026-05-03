@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "https://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<title>TestNG Report</title>
+<style type="text/css">table {margin-bottom:10px;border-collapse:collapse;empty-cells:show}th,td {border:1px solid #009;padding:.25em .5em}th {vertical-align:bottom}td {vertical-align:top}table a {font-weight:bold}.stripe td {background-color: #E6EBF9}.num {text-align:right}.passedodd td {background-color: #3F3}.passedeven td {background-color: #0A0}.skippedodd td {background-color: #DDD}.skippedeven td {background-color: #CCC}.failedodd td,.attn {background-color: #F33}.failedeven td,.stripe .attn {background-color: #D00}.stacktrace {white-space:pre;font-family:monospace}.totop {font-size:85%;text-align:center;border-bottom:2px solid #000}.invisible {display:none}</style>
+</head>
+<body>
+<table>
+<tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
+<tr><th colspan="8">Chatboq Automation Suite</th></tr>
+<tr><td><a href="#t0">Login Tests</a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">59,930</td><td></td><td></td></tr>
+<tr class="stripe"><td><a href="#t1">Client Tests </a></td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">27,826</td><td></td><td></td></tr>
+<tr><td><a href="#t2">Ticket Tests</a></td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">58,179</td><td></td><td></td></tr>
+<tr class="stripe"><td><a href="#t3">Message Tests</a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">23,256</td><td></td><td></td></tr>
+<tr><td><a href="#t4">Invitation Tests</a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">118,682</td><td></td><td></td></tr>
+<tr><th>Total</th><th class="num">7</th><th class="num">0</th><th class="num">0</th><th class="num attn">1</th><th class="num">287,873</th><th colspan="2"></th></tr>
+</table>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Chatboq Automation Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Login Tests &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">pipelineStater.LoginTest</td><td><a href="#m0">testNavigateToDashboard</a></td><td rowspan="1">1777824508253</td><td rowspan="1">33560</td></tr><tr><th colspan="4">Login Tests &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">pipelineStater.LoginTest</td><td><a href="#m1">testSavedAuthLogin</a></td><td rowspan="1">1777824498983</td><td rowspan="1">9261</td></tr></tbody>
+<tbody id="t1"><tr><th colspan="4">Client Tests  &#8212; passed</th></tr><tr class="passedeven"><td rowspan="2">pipelineStater.ClientTest</td><td><a href="#m2">testClientListAccessible</a></td><td rowspan="1">1777824567453</td><td rowspan="1">2380</td></tr><tr class="passedeven"><td><a href="#m3">testCreateSingleClient</a></td><td rowspan="1">1777824556055</td><td rowspan="1">11390</td></tr></tbody>
+<tbody id="t2"><tr><th colspan="4">Ticket Tests &#8212; passed</th></tr><tr class="passedeven"><td rowspan="2">pipelineStater.TicketTest</td><td><a href="#m4">testCreateGuestTicket</a></td><td rowspan="1">1777824585047</td><td rowspan="1">20448</td></tr><tr class="passedeven"><td><a href="#m5">testCreateNormalCustomerTicket</a></td><td rowspan="1">1777824605501</td><td rowspan="1">22521</td></tr></tbody>
+<tbody id="t3"><tr><th colspan="4">Message Tests &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">pipelineStater.MessageTest</td><td><a href="#m6">testSendMessage</a></td><td rowspan="1">1777824642974</td><td rowspan="1">8324</td></tr></tbody>
+<tbody id="t4"><tr><th colspan="4">Invitation Tests &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">pipelineStater.InvitationTest</td><td><a href="#m7">testSendSingleInvitation</a></td><td rowspan="1">1777824666445</td><td rowspan="1">103693</td></tr></tbody>
+</table>
+<h2>Login Tests</h2><h3 id="m0">pipelineStater.LoginTest#testNavigateToDashboard</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //div[contains(@class,&apos;rounded-full&apos;) and contains(@class,&apos;h-8&apos;)] (tried for 30 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.21.0&apos;, revision: &apos;79ed462ef4&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.18&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 147.0.7727.138, chrome: {chromedriverVersion: 147.0.7727.117 (474cc805edd..., userDataDir: C:\Users\HomePC\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64862}, goog:processID: 25460, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64862/devtoo..., se:cdpVersion: 147.0.7727.138, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 9ff0857ae9125f9575d3c7a666f46125
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at pipelineStater.LoginTest.testNavigateToDashboard(LoginTest.java:50)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 27 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">pipelineStater.LoginTest#testSavedAuthLogin</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>Client Tests </h2><h3 id="m2">pipelineStater.ClientTest#testClientListAccessible</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">pipelineStater.ClientTest#testCreateSingleClient</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>Ticket Tests</h2><h3 id="m4">pipelineStater.TicketTest#testCreateGuestTicket</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m5">pipelineStater.TicketTest#testCreateNormalCustomerTicket</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>Message Tests</h2><h3 id="m6">pipelineStater.MessageTest#testSendMessage</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>Invitation Tests</h2><h3 id="m7">pipelineStater.InvitationTest#testSendSingleInvitation</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>1</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+</body>
+</html>

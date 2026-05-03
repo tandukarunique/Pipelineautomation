@@ -1,10 +1,10 @@
-package stater;
+package pipelinestater;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AuthState {
+public class plAuthState {
     public List<CookieData> cookies;
     public List<OriginData> origins;
     

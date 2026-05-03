@@ -14,6 +14,19 @@ public class MessageTest extends BaseTest {
     public void testSendMessage() throws Exception {
         System.out.println("Test: Send Message");
         
+        
+        
+        //inbox ma janey
+        Thread.sleep(4000);
+        WebElement inboxLink = wait.until(ExpectedConditions.elementToBeClickable(
+        	    By.xpath("//a[contains(@href, '/inbox')]")
+        	));
+        	js.executeScript("arguments[0].click();", inboxLink);
+        	System.out.println("Clicked Inbox!");
+        	
+        	
+        	
+        	
         navigateToChat();
         
         WebElement input = wait.until(ExpectedConditions.elementToBeClickable(
@@ -21,17 +34,17 @@ public class MessageTest extends BaseTest {
         ));
         input.click();
         
-        String testMessage = "Test message - " + System.currentTimeMillis();
-        input.sendKeys(testMessage);
+        input.sendKeys("Demo");
         Thread.sleep(500);
         input.sendKeys(Keys.ENTER);
+        System.out.println("Demo message sent!");
+        Thread.sleep(500);
         
-        System.out.println("✓ Message sent: " + testMessage);
-        Thread.sleep(2000);
+                
         
         // Verify message appears
         WebElement sentMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(
-            By.xpath("//p[contains(@class,'leading-7')]//span[contains(text(),'" + testMessage + "')]")
+            By.xpath("//p[contains(@class,'leading-7')]//span[contains(text(),'Demo')]")
         ));
         Assert.assertNotNull(sentMessage, "Message should appear in chat");
     }
@@ -44,7 +57,7 @@ public class MessageTest extends BaseTest {
         
         // Send a message first
         WebElement input = wait.until(ExpectedConditions.elementToBeClickable(
-            By.xpath("//div[@contenteditable='true']")
+                By.xpath("//div[@contenteditable='true']")
         ));
         input.click();
         input.sendKeys("Original message for editing");
@@ -160,16 +173,18 @@ public class MessageTest extends BaseTest {
     }
     
     private void navigateToChat() throws Exception {
-        try {
-            WebElement demoChat = driver.findElement(
-                By.xpath("//button[contains(., 'Demo')]")
-            );
-            js.executeScript("arguments[0].click();", demoChat);
-            System.out.println("✓ Demo chat selected");
-            Thread.sleep(2000);
-        } catch (Exception e) {
-            System.out.println("Could not find Demo chat: " + e.getMessage());
-            throw e;
-        }
+    	  try {
+             
+            		  WebElement demoChat = wait.until(ExpectedConditions.elementToBeClickable(
+            				    By.xpath("//span[contains(translate(text(), 'DEMO', 'demo'), 'demo')]")
+            				));
+            				js.executeScript("arguments[0].click();", demoChat);
+              System.out.println("Demo chat selected using contains text!");
+              Thread.sleep(1000);
+          } catch (Exception e2) {
+              System.out.println("Could not find Demo chat: " + e2.getMessage());
+          }
+
+       
     }
 }

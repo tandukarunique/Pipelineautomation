@@ -14,7 +14,8 @@ public class plNormalCustomer {
     private WebDriverWait wait;
     private JavascriptExecutor js;
 
-    public NormalCustomer(WebDriver driver, WebDriverWait wait, JavascriptExecutor js) {
+    // FIXED: Constructor name matches class name
+    public plNormalCustomer(WebDriver driver, WebDriverWait wait, JavascriptExecutor js) {
         this.driver = driver;
         this.wait = wait;
         this.js = js;

@@ -11,14 +11,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.time.Duration;
 import java.util.Random;
 
-public class plCreateClients {
+public class plCreateclients {
 
     private WebDriver driver;
     private WebDriverWait wait;
     private JavascriptExecutor js;
     
-    // Constructor
-    public CreateClients(WebDriver driver, WebDriverWait wait, JavascriptExecutor js) {
+    // FIXED: Constructor name matches class name
+    public plCreateclients(WebDriver driver, WebDriverWait wait, JavascriptExecutor js) {
         this.driver = driver;
         this.wait = wait;
         this.js = (JavascriptExecutor) driver;

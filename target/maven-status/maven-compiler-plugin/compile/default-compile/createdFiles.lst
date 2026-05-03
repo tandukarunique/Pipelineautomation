@@ -1,0 +1,11 @@
+pipelineemailAutomate\plEmailautomate.class
+pipelinestater\plAuthState$LocalStorageItem.class
+pipelineTicket\plGuestCustomer.class
+pipelinestater\plAuthState.class
+pipelinestater\plAgentlimit.class
+pipelinestater\plAuthState$CookieData.class
+pipelinestater\plLoginpage.class
+pipelinestater\plCreateclients.class
+pipelinestater\plAuthState$OriginData.class
+pipelineTicket\plNormalCustomer.class
+pipelinestater\plFileUploadTest.class

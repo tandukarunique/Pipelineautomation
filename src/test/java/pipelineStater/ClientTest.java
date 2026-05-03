@@ -1,19 +1,20 @@
 package pipelineStater;
 
-import stater.CreateClients;
+import pipelinestater.plCreateclients;   // ← CORRECTED import
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.annotations.Parameters;
+import org.testng.annotations.Optional;  // ← ADD THIS for @Optional to work
 
 public class ClientTest extends BaseTest {
     
-    private CreateClients createClients;
+    private plCreateclients createClients;  // ← CORRECTED type
     
     @Test(priority = 20, description = "Create single client")
     public void testCreateSingleClient() throws Exception {
         System.out.println("Test: Create Single Client");
         
-        createClients = new CreateClients(driver, wait, js);
+        createClients = new plCreateclients(driver, wait, js);  // ← CORRECTED
         
         createClients.clickclientoption();
         Thread.sleep(1000);
@@ -44,7 +45,7 @@ public class ClientTest extends BaseTest {
     public void testCreateMultipleClients(@Optional("5") int numberOfClients) throws Exception {
         System.out.println("Test: Create " + numberOfClients + " Clients");
         
-        createClients = new CreateClients(driver, wait, js);
+        createClients = new plCreateclients(driver, wait, js);  // ← CORRECTED
         createClients.clickclientoption();
         
         int successCount = 0;
@@ -89,7 +90,7 @@ public class ClientTest extends BaseTest {
     public void testClientListAccessible() throws Exception {
         System.out.println("Test: Client List Accessibility");
         
-        createClients = new CreateClients(driver, wait, js);
+        createClients = new plCreateclients(driver, wait, js);  // ← CORRECTED
         createClients.clickclientoption();
         
         Thread.sleep(2000);

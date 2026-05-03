@@ -1,4 +1,4 @@
-package Ticket;
+package pipelineTicket;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -9,13 +9,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
-public class GuestCustomer {
+public class plGuestCustomer {
     
     private WebDriver driver;
     private WebDriverWait wait;
     private JavascriptExecutor js;
     
-    public GuestCustomer(WebDriver driver) {
+    // FIXED: Constructor name matches class name
+    public plGuestCustomer(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         this.js = (JavascriptExecutor) driver;

@@ -65,11 +65,14 @@ pipeline {
 
     post {
         always {
-            bat '''
-                taskkill /F /IM chrome.exe 2>nul
-                taskkill /F /IM chromedriver.exe 2>nul
-                exit 0
-            '''
+           bat """
+    mvn test ^ 
+        -Dbrowser=${params.BROWSER} ^
+        -Dheadless=${params.HEADLESS} ^
+        -DclientCount=${params.CLIENT_COUNT} ^
+        -DticketCount=${params.TICKET_COUNT} ^
+        || exit 0
+"""
         }
     }
 }

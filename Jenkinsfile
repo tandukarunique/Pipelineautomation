@@ -48,7 +48,7 @@ pipeline {
                 publishHTML([
                     allowMissing: true,
                     alwaysLinkToLastBuild: true,   // ← added
-                    keepAll: true,                  // ← added
+                    keepAll: true,                 
                     reportDir: 'test-output',
                     reportFiles: 'index.html',
                     reportName: 'TestNG Report'

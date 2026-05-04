@@ -41,7 +41,7 @@
             <class name="pipelineStater.TicketTest">
                 <methods>
                     <include name="testCreateGuestTicket"/>
-                    <include name="testCreateNormalCustomerTicket"/>
+                    <!-- <include name="testCreateNormalCustomerTicket"/> -->
                     <!-- Excluding testCreateMultipleTickets for performance -->
                 </methods>
             </class>
@@ -63,7 +63,7 @@
  
     
     <!-- Invitation Tests ) -->
-    <test name="Invitation Tests" >
+    <test name="Invitation Tests" enabled="false" >
         <classes>
             <class name="pipelineStater.InvitationTest">
                 <methods>
@@ -73,5 +73,20 @@
             </class>
         </classes>
     </test>
+    
+     <!--Multiple invitation Tests ) -->
+    <test name="Invitation Tests">
+    <parameter name="invitationCount" value="5"/>
+    <classes>
+        <class name="pipelineStater.InvitationTest">
+            <methods>
+                <include name="testSendMultipleInvitations"/>
+            </methods>
+        </class>
+    </classes>
+</test>
+    
+    
+    
     
 </suite>

@@ -45,6 +45,11 @@ public class InvitationTest extends BaseTest {
         emailAutomate.closeEmailBrowser();
     }
     
+    
+    
+    
+    
+    
     @Test(priority = 11, description = "Send multiple invitations")
     @Parameters({"invitationCount"})
     public void testSendMultipleInvitations(@Optional("6") int numberOfInvitations) throws Exception {
@@ -69,6 +74,11 @@ public class InvitationTest extends BaseTest {
         }
     }
     
+    
+    
+    
+    
+    
     @Test(priority = 12, description = "Test Agentlimit class with multiple invitations")
     public void testAgentLimitClass() throws Exception {
         System.out.println("Test: AgentLimit Class Execution");
@@ -81,6 +91,11 @@ public class InvitationTest extends BaseTest {
         Assert.assertNotNull(agentLimit, "AgentLimit should complete execution");
     }
   
+    
+    
+    
+    
+    
     //Setting page ma janey....
     private void navigateToInviteSection() throws InterruptedException {
 		 try {
@@ -116,6 +131,8 @@ public class InvitationTest extends BaseTest {
 		
     	}
     	
+    
+    
     private String sendInvitation(String email) throws InterruptedException {
         System.out.println("Sending invitation to: " + email);
         
@@ -202,6 +219,9 @@ public class InvitationTest extends BaseTest {
         return email;
     }
     
+    
+    
+    
     private void selectTeam() throws InterruptedException {
              
     	 try {
@@ -248,6 +268,9 @@ public class InvitationTest extends BaseTest {
     	    }
         
     }
+    
+    
+    
     
     private boolean acceptInvitation() throws InterruptedException {
         System.out.println("Waiting for invitation email...");

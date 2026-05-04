@@ -17,4 +17,16 @@
       </class> <!-- pipelineStater.LoginTest -->
     </classes>
   </test> <!-- Login Tests(failed) -->
+  <test thread-count="1" name="Invitation Tests(failed)">
+    <parameter name="invitationCount" value="5"/>
+    <classes>
+      <class name="pipelineStater.InvitationTest">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="testSendMultipleInvitations"/>
+        </methods>
+      </class> <!-- pipelineStater.InvitationTest -->
+    </classes>
+  </test> <!-- Invitation Tests(failed) -->
 </suite> <!-- Failed suite [Chatboq Automation Suite] -->

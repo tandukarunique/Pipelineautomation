@@ -47,7 +47,7 @@ pipeline {
                 junit 'test-output/junitreports/*.xml'
                 publishHTML([
                     allowMissing: true,
-                    alwaysLinkToLastBuild: true,   // ← added
+                    alwaysLinkToLastBuild: true,
                     keepAll: true,                 
                     reportDir: 'test-output',
                     reportFiles: 'index.html',
@@ -62,17 +62,12 @@ pipeline {
             }
         }
     }
-
+    
     post {
-        always {
-           bat """
-    mvn test ^ 
-        -Dbrowser=${params.BROWSER} ^
-        -Dheadless=${params.HEADLESS} ^
-        -DclientCount=${params.CLIENT_COUNT} ^
-        -DticketCount=${params.TICKET_COUNT} ^
-        || exit 0
-"""
-        }
+    always {
+        echo "Build completed - cleaning up resources"
+        // Add cleanup commands here if needed, NOT mvn test
+        bat 'taskkill /F /IM chromedriver.exe || exit 0'
     }
+}
 }

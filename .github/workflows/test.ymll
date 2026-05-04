@@ -1,0 +1,70 @@
+name: Run Selenium Tests
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      BROWSER:
+        description: 'Browser to run tests on'
+        default: 'chrome'
+        type: string
+      HEADLESS:
+        description: 'Run in headless mode'
+        default: 'true'
+        type: string
+      TEST_SUITE:
+        description: 'Test suite (all/smoke)'
+        default: 'all'
+        type: string
+      CLIENT_COUNT:
+        description: 'Number of clients to create'
+        default: '5'
+        type: string
+      TICKET_COUNT:
+        description: 'Number of tickets to create'
+        default: '10'
+        type: string
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Set up Chrome
+        uses: browser-actions/setup-chrome@v1
+
+      - name: Run Tests
+        run: |
+          if [ "${{ github.event.inputs.TEST_SUITE }}" == "smoke" ]; then
+            mvn test -Dsuite=smoke
+          else
+            mvn test \
+              -Dbrowser="${{ github.event.inputs.BROWSER || 'chrome' }}" \
+              -Dheadless=true \
+              -DclientCount="${{ github.event.inputs.CLIENT_COUNT || '5' }}" \
+              -DticketCount="${{ github.event.inputs.TICKET_COUNT || '10' }}"
+          fi
+
+      - name: Upload TestNG Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: TestNG-Report
+          path: test-output/
+
+      - name: Upload Surefire Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Surefire-Report
+          path: target/surefire-reports/

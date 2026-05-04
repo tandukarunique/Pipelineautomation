@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    
+
     parameters {
         choice(name: 'BROWSER', choices: ['chrome'], description: 'Browser to run tests on')
         booleanParam(name: 'HEADLESS', defaultValue: false, description: 'Run browser in headless mode')
@@ -8,7 +8,7 @@ pipeline {
         string(name: 'CLIENT_COUNT', defaultValue: '5', description: 'Number of clients to create')
         string(name: 'TICKET_COUNT', defaultValue: '10', description: 'Number of tickets to create')
     }
-    
+
     stages {
         stage('Checkout') {
             steps {
@@ -16,14 +16,14 @@ pipeline {
                 echo 'Code checked out'
             }
         }
-        
+
         stage('Clean') {
             steps {
                 bat 'mvn clean'
                 echo 'Clean completed'
             }
         }
-        
+
         stage('Run Tests') {
             steps {
                 script {
@@ -41,26 +41,28 @@ pipeline {
                 }
             }
         }
-        
+
         stage('Generate Reports') {
             steps {
                 junit 'test-output/junitreports/*.xml'
                 publishHTML([
                     allowMissing: true,
+                    alwaysLinkToLastBuild: true,   // ← added
+                    keepAll: true,                  // ← added
                     reportDir: 'test-output',
                     reportFiles: 'index.html',
                     reportName: 'TestNG Report'
                 ])
             }
         }
-        
+
         stage('Archive') {
             steps {
                 archiveArtifacts artifacts: 'test-output/**/*', allowEmptyArchive: true
             }
         }
     }
-    
+
     post {
         always {
             bat '''

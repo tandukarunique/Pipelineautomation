@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="6" total="14" passed="7" failed="1" skipped="0">
+<testng-results ignored="2" total="5" passed="2" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-05-03T21:53:02 NPT" name="Chatboq Automation Suite" finished-at="2026-05-03T21:57:50 NPT" duration-ms="288183">
+  <suite started-at="2026-05-04T09:14:38 NPT" name="Chatboq Automation Suite" finished-at="2026-05-04T09:17:42 NPT" duration-ms="183732">
     <groups>
     </groups>
-    <test started-at="2026-05-03T21:53:02 NPT" name="Login Tests" finished-at="2026-05-03T21:54:02 NPT" duration-ms="59930">
+    <test started-at="2026-05-04T09:14:38 NPT" name="Login Tests" finished-at="2026-05-04T09:15:44 NPT" duration-ms="65528">
       <class name="pipelineStater.LoginTest">
-        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:pipelineStater.LoginTest@279fedbd]" started-at="2026-05-03T21:53:02 NPT" name="setUp" finished-at="2026-05-03T21:53:18 NPT" duration-ms="16361" status="PASS">
+        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:pipelineStater.LoginTest@279fedbd]" started-at="2026-05-04T09:14:38 NPT" name="setUp" finished-at="2026-05-04T09:15:00 NPT" duration-ms="21595" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -23,27 +23,27 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="testSavedAuthLogin()[pri:1, instance:pipelineStater.LoginTest@279fedbd]" started-at="2026-05-03T21:53:18 NPT" name="testSavedAuthLogin" description="Verify login with saved authentication" finished-at="2026-05-03T21:53:28 NPT" duration-ms="9261" status="PASS">
+        <test-method signature="testSavedAuthLogin()[pri:1, instance:pipelineStater.LoginTest@279fedbd]" started-at="2026-05-04T09:15:00 NPT" name="testSavedAuthLogin" description="Verify login with saved authentication" finished-at="2026-05-04T09:15:09 NPT" duration-ms="9577" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSavedAuthLogin -->
-        <test-method signature="testNavigateToDashboard()[pri:3, instance:pipelineStater.LoginTest@279fedbd]" started-at="2026-05-03T21:53:28 NPT" name="testNavigateToDashboard" description="Verify dashboard navigation" finished-at="2026-05-03T21:54:01 NPT" duration-ms="33560" status="FAIL">
+        <test-method signature="testNavigateToDashboard()[pri:3, instance:pipelineStater.LoginTest@279fedbd]" started-at="2026-05-04T09:15:09 NPT" name="testNavigateToDashboard" description="Verify dashboard navigation" finished-at="2026-05-04T09:15:43 NPT" duration-ms="33640" status="FAIL">
           <exception class="org.openqa.selenium.TimeoutException">
             <message>
               <![CDATA[Expected condition failed: waiting for element to be clickable: By.xpath: //div[contains(@class,'rounded-full') and contains(@class,'h-8')] (tried for 30 second(s) with 500 milliseconds interval)
 Build info: version: '4.21.0', revision: '79ed462ef4'
 System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.18'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 147.0.7727.138, chrome: {chromedriverVersion: 147.0.7727.117 (474cc805edd..., userDataDir: C:\Users\HomePC\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64862}, goog:processID: 25460, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64862/devtoo..., se:cdpVersion: 147.0.7727.138, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 9ff0857ae9125f9575d3c7a666f46125]]>
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 147.0.7727.138, chrome: {chromedriverVersion: 147.0.7727.117 (474cc805edd..., userDataDir: C:\Users\HomePC\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:62045}, goog:processID: 23168, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:62045/devtoo..., se:cdpVersion: 147.0.7727.138, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: b1de94723bc3c68b66af334a10c9828a]]>
             </message>
             <full-stacktrace>
               <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //div[contains(@class,'rounded-full') and contains(@class,'h-8')] (tried for 30 second(s) with 500 milliseconds interval)
 Build info: version: '4.21.0', revision: '79ed462ef4'
 System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.18'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 147.0.7727.138, chrome: {chromedriverVersion: 147.0.7727.117 (474cc805edd..., userDataDir: C:\Users\HomePC\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64862}, goog:processID: 25460, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64862/devtoo..., se:cdpVersion: 147.0.7727.138, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 9ff0857ae9125f9575d3c7a666f46125
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 147.0.7727.138, chrome: {chromedriverVersion: 147.0.7727.117 (474cc805edd..., userDataDir: C:\Users\HomePC\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:62045}, goog:processID: 23168, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:62045/devtoo..., se:cdpVersion: 147.0.7727.138, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: b1de94723bc3c68b66af334a10c9828a
 at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
 at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
 at pipelineStater.LoginTest.testNavigateToDashboard(LoginTest.java:50)
@@ -81,107 +81,15 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testNavigateToDashboard -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:pipelineStater.LoginTest@279fedbd]" started-at="2026-05-03T21:54:01 NPT" name="tearDown" finished-at="2026-05-03T21:54:02 NPT" duration-ms="620" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:pipelineStater.LoginTest@279fedbd]" started-at="2026-05-04T09:15:43 NPT" name="tearDown" finished-at="2026-05-04T09:15:44 NPT" duration-ms="600" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- pipelineStater.LoginTest -->
     </test> <!-- Login Tests -->
-    <test started-at="2026-05-03T21:54:02 NPT" name="Client Tests " finished-at="2026-05-03T21:54:30 NPT" duration-ms="27826">
-      <class name="pipelineStater.ClientTest">
-        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:pipelineStater.ClientTest@4c309d4d]" started-at="2026-05-03T21:54:02 NPT" name="setUp" finished-at="2026-05-03T21:54:16 NPT" duration-ms="13367" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[false]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method signature="testCreateSingleClient()[pri:20, instance:pipelineStater.ClientTest@4c309d4d]" started-at="2026-05-03T21:54:16 NPT" name="testCreateSingleClient" description="Create single client" finished-at="2026-05-03T21:54:27 NPT" duration-ms="11390" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testCreateSingleClient -->
-        <test-method signature="testClientListAccessible()[pri:22, instance:pipelineStater.ClientTest@4c309d4d]" started-at="2026-05-03T21:54:27 NPT" name="testClientListAccessible" description="Verify client list is accessible" finished-at="2026-05-03T21:54:29 NPT" duration-ms="2380" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testClientListAccessible -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:pipelineStater.ClientTest@4c309d4d]" started-at="2026-05-03T21:54:29 NPT" name="tearDown" finished-at="2026-05-03T21:54:30 NPT" duration-ms="670" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- pipelineStater.ClientTest -->
-    </test> <!-- Client Tests  -->
-    <test started-at="2026-05-03T21:54:30 NPT" name="Ticket Tests" finished-at="2026-05-03T21:55:28 NPT" duration-ms="58179">
-      <class name="pipelineStater.TicketTest">
-        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:pipelineStater.TicketTest@63070bab]" started-at="2026-05-03T21:54:30 NPT" name="setUp" finished-at="2026-05-03T21:54:45 NPT" duration-ms="14528" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[false]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method signature="testCreateGuestTicket()[pri:30, instance:pipelineStater.TicketTest@63070bab]" started-at="2026-05-03T21:54:45 NPT" name="testCreateGuestTicket" description="Create guest ticket" finished-at="2026-05-03T21:55:05 NPT" duration-ms="20448" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testCreateGuestTicket -->
-        <test-method signature="testCreateNormalCustomerTicket()[pri:31, instance:pipelineStater.TicketTest@63070bab]" started-at="2026-05-03T21:55:05 NPT" name="testCreateNormalCustomerTicket" description="Create normal customer ticket" finished-at="2026-05-03T21:55:28 NPT" duration-ms="22521" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testCreateNormalCustomerTicket -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:pipelineStater.TicketTest@63070bab]" started-at="2026-05-03T21:55:28 NPT" name="tearDown" finished-at="2026-05-03T21:55:28 NPT" duration-ms="668" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- pipelineStater.TicketTest -->
-    </test> <!-- Ticket Tests -->
-    <test started-at="2026-05-03T21:55:28 NPT" name="Message Tests" finished-at="2026-05-03T21:55:51 NPT" duration-ms="23256">
-      <class name="pipelineStater.MessageTest">
-        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:pipelineStater.MessageTest@117e949d]" started-at="2026-05-03T21:55:28 NPT" name="setUp" finished-at="2026-05-03T21:55:42 NPT" duration-ms="14229" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[false]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method signature="testSendMessage()[pri:40, instance:pipelineStater.MessageTest@117e949d]" started-at="2026-05-03T21:55:42 NPT" name="testSendMessage" description="Send message in chat" finished-at="2026-05-03T21:55:51 NPT" duration-ms="8324" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testSendMessage -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:pipelineStater.MessageTest@117e949d]" started-at="2026-05-03T21:55:51 NPT" name="tearDown" finished-at="2026-05-03T21:55:51 NPT" duration-ms="692" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- pipelineStater.MessageTest -->
-    </test> <!-- Message Tests -->
-    <test started-at="2026-05-03T21:55:52 NPT" name="Invitation Tests" finished-at="2026-05-03T21:57:50 NPT" duration-ms="118682">
+    <test started-at="2026-05-04T09:15:44 NPT" name="Invitation Tests" finished-at="2026-05-04T09:17:42 NPT" duration-ms="118103">
       <class name="pipelineStater.InvitationTest">
-        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:pipelineStater.InvitationTest@d21a74c]" started-at="2026-05-03T21:55:52 NPT" name="setUp" finished-at="2026-05-03T21:56:06 NPT" duration-ms="14420" status="PASS">
+        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:pipelineStater.InvitationTest@38102d01]" started-at="2026-05-04T09:15:44 NPT" name="setUp" finished-at="2026-05-04T09:15:59 NPT" duration-ms="15537" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -197,7 +105,7 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="testSendSingleInvitation(int)[pri:10, instance:pipelineStater.InvitationTest@d21a74c]" started-at="2026-05-03T21:56:06 NPT" name="testSendSingleInvitation" description="Send single invitation" finished-at="2026-05-03T21:57:50 NPT" duration-ms="103693" status="PASS">
+        <test-method signature="testSendSingleInvitation(int)[pri:10, instance:pipelineStater.InvitationTest@38102d01]" started-at="2026-05-04T09:15:59 NPT" name="testSendSingleInvitation" description="Send single invitation" finished-at="2026-05-04T09:17:41 NPT" duration-ms="101955" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -208,7 +116,7 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSendSingleInvitation -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:pipelineStater.InvitationTest@d21a74c]" started-at="2026-05-03T21:57:50 NPT" name="tearDown" finished-at="2026-05-03T21:57:50 NPT" duration-ms="559" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:pipelineStater.InvitationTest@38102d01]" started-at="2026-05-04T09:17:41 NPT" name="tearDown" finished-at="2026-05-04T09:17:42 NPT" duration-ms="608" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

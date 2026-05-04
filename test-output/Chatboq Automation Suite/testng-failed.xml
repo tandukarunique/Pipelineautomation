@@ -5,7 +5,6 @@
   <parameter name="ticketCount" value="2"/>
   <parameter name="browser" value="chrome"/>
   <parameter name="ticketType" value="guest"/>
-  <parameter name="invitationCount" value="1"/>
   <parameter name="clientCount" value="1"/>
   <test thread-count="1" name="Login Tests(failed)">
     <classes>

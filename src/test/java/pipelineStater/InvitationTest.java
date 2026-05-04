@@ -47,7 +47,7 @@ public class InvitationTest extends BaseTest {
     
     @Test(priority = 11, description = "Send multiple invitations")
     @Parameters({"invitationCount"})
-    public void testSendMultipleInvitations(@Optional("3") int numberOfInvitations) throws Exception {
+    public void testSendMultipleInvitations(@Optional("6") int numberOfInvitations) throws Exception {
         System.out.println("Test: Send " + numberOfInvitations + " Invitations");
         
         for (int i = 1; i <= numberOfInvitations; i++) {

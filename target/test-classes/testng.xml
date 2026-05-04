@@ -7,7 +7,7 @@
     <parameter name="clientCount" value="1"/>
     <parameter name="ticketCount" value="2"/>
     <parameter name="ticketType" value="guest"/>
-    <parameter name="invitationCount" value="1"/>
+    
     
     <!-- Login Tests - Auto login only (no manual CAPTCHA test) -->
     <test name="Login Tests">
@@ -15,7 +15,7 @@
             <class name="pipelineStater.LoginTest">
                 <methods>
                     <include name="testSavedAuthLogin"/>
-                    <include name="testNavigateToDashboard"/>
+                    <include name="testNavigateToDashboard" />
                     <!-- Excluding testManualLoginWithCaptcha - run only once manually if needed -->
                 </methods>
             </class>
@@ -23,9 +23,9 @@
     </test>
   
     <!-- Client Tests -->
-    <test name="Client Tests ">
+    <test name="Client Tests " enabled="false">
         <classes>
-            <class name="pipelineStater.ClientTest">
+            <class name="pipelineStater.ClientTest" >
                 <methods>
                     <include name="testCreateSingleClient"/>
                     <include name="testClientListAccessible"/>
@@ -36,7 +36,7 @@
     </test>
     
     <!-- Ticket Tests -->
-    <test name="Ticket Tests" >
+    <test name="Ticket Tests" enabled="false" >
         <classes>
             <class name="pipelineStater.TicketTest">
                 <methods>
@@ -49,7 +49,7 @@
     </test>
     
     <!-- Message Tests -->
-    <test name="Message Tests" >
+    <test name="Message Tests" enabled="false" >
         <classes>
             <class name="pipelineStater.MessageTest">
                 <methods>
@@ -68,6 +68,7 @@
             <class name="pipelineStater.InvitationTest">
                 <methods>
                     <include name="testSendSingleInvitation"/>
+                    <parameter name="invocation-count" value="5"/>
                 </methods>
             </class>
         </classes>

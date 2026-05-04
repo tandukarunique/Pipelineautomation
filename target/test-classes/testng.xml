@@ -23,7 +23,7 @@
     </test>
   
     <!-- Client Tests -->
-    <test name="Client Tests " enabled="false">
+    <test name="Client Tests " >
         <classes>
             <class name="pipelineStater.ClientTest" >
                 <methods>
@@ -36,7 +36,7 @@
     </test>
     
     <!-- Ticket Tests -->
-    <test name="Ticket Tests" enabled="false" >
+    <test name="Ticket Tests" >
         <classes>
             <class name="pipelineStater.TicketTest">
                 <methods>
@@ -49,7 +49,7 @@
     </test>
     
     <!-- Message Tests -->
-    <test name="Message Tests" enabled="false" >
+    <test name="Message Tests"  >
         <classes>
             <class name="pipelineStater.MessageTest">
                 <methods>
@@ -63,7 +63,7 @@
  
     
     <!-- Invitation Tests ) -->
-    <test name="Invitation Tests" enabled="false" >
+    <test name="Invitation Tests"  >
         <classes>
             <class name="pipelineStater.InvitationTest">
                 <methods>
@@ -75,8 +75,8 @@
     </test>
     
      <!--Multiple invitation Tests ) -->
-    <test name="Invitation Tests">
-    <parameter name="invitationCount" value="5"/>
+    <test name="Invitation Tests" enabled="false">
+    <parameter name="invitationCount" value="5" />
     <classes>
         <class name="pipelineStater.InvitationTest">
             <methods>
